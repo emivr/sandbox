@@ -36,4 +36,4 @@ for f in x:
     else:
         print(f)
 writefile.close()
-import test
+import makeplot
