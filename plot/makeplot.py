@@ -11,8 +11,11 @@ for f in r:
     ms.append(mil.strip())
     timestamps.append(timestamp)
 
-plt.ylabel('ms')
-plt.xlabel('number of packages')
-plt.title("Plot of {} points".format(len(ms)))
-plt.plot(ms)
+fig, ax = plt.subplots()
+
+ax.plot(ms)
+ax.set(xlabel='Number of packets', ylabel='Miliseconds',
+       title="Miliseconds to Vg.no for {} packets".format(len(ms)))
+ax.grid()
+
 plt.show()
