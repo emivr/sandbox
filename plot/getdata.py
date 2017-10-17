@@ -4,15 +4,17 @@ import signal
 import datetime
 time_before_launch = time.time()
 howlong = 60*60
-p = subprocess.Popen(["ping", "-D", "-c 100", "vg.no"], stdout=subprocess.PIPE,)
+p = subprocess.Popen(["ping", "-D", "vg.no"], stdout=subprocess.PIPE,)
 print("## Process: {} \t Scheduled to run for {} seconds ## ".format(p.pid,howlong))
 # print "Process ID of subprocess %s" % p.pid
-
-elapsed = int(time.time()-time_before_launch)
-while(elapsed != howlong):
-    elapsed = int(time.time()-time_before_launch)
-    if(elapsed==howlong):
-        print("been waiting for {}".format(howlong))
+print("Going to sleep for {} seconds".format(howlong))
+time.sleep(howlong)
+print("Slept for {}seconds ".format(howlong))
+# elapsed = int(time.time()-time_before_launch)
+# while(elapsed != howlong):
+#     elapsed = int(time.time()-time_before_launch)
+#     if(elapsed==howlong):
+#         print("been waiting for {}".format(howlong))
 
 # Send SIGTER (on Linux)
 p.send_signal(signal.SIGINT)
